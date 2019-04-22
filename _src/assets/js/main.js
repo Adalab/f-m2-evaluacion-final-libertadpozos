@@ -21,14 +21,49 @@ function searchMovie(){
             const nameSerie = data[i].show.name;
             const urlImageNull = data[i].show.image;
             if (urlImageNull===null){
-                list.innerHTML+= `<h2>${nameSerie}<h2> <img src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV" alt="${nameSerie}"> `;  
+                const listElement= document.createElement('li');
+                listElement.setAttribute('class', 'item');
+                list.appendChild(listElement);
+                listElement.addEventListener('click', addFavorite);
+
+                const titleSeries= document.createElement('h2');
+                titleSeries.setAttribute('class', 'title-series');
+                const titleText= document.createTextNode(nameSerie);
+                titleSeries.appendChild(titleText);
+                listElement.appendChild(titleSeries);
+
+                const imgSeries= document.createElement('img');
+                imgSeries.setAttribute('src', "https://via.placeholder.com/210x295/ffffff/666666/?text=TV");
+                imgSeries.setAttribute('alt', nameSerie);
+                listElement.appendChild(imgSeries);
+                
             }
             else{
                 const urlImage = data[i].show.image.medium;
-            list.innerHTML+= `<h2>${nameSerie}<h2> <img src="${urlImage}" alt="${nameSerie}"> `;
+
+                const listElement= document.createElement('li');
+                listElement.setAttribute('class', 'item');
+                list.appendChild(listElement);
+                listElement.addEventListener('click', addFavorite);
+
+                const titleSeries= document.createElement('h2');
+                titleSeries.setAttribute('class', 'title-series');
+                const titleText= document.createTextNode(nameSerie);
+                titleSeries.appendChild(titleText);
+                listElement.appendChild(titleSeries);
+
+                const imgSeries= document.createElement('img');
+                imgSeries.setAttribute('src', urlImage);
+                imgSeries.setAttribute('alt', nameSerie);
+                listElement.appendChild(imgSeries);
+                
             }
         }
     })
  }
  btnEl.addEventListener('click', searchMovie);
 
+function addFavorite(event){
+ const selected=event.currentTarget;
+ selected.classList.toggle('selected');
+}
