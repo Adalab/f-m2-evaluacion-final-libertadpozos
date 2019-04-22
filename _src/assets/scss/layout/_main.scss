@@ -1,4 +1,8 @@
-
+.container{
+    display:flex;
+    border: 1px solid blue;
+    min-height: 100vh;
+}
 
 .item{
     margin-bottom: 10px;
@@ -6,6 +10,9 @@
 }
 
 .selected{
-    background-color:red;
-    
+    background-color:red;  
+}
+
+.favourites{
+    border: 1px solid blue;
 }

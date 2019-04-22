@@ -3,6 +3,7 @@
 const inputEl= document.querySelector('#series');
 const btnEl= document.querySelector('.btn');
 const list= document.querySelector('.series__list');
+const favList = document.querySelector('.favourite-series');
 
 const arrFav=[];
 
@@ -58,7 +59,6 @@ function searchMovie(){
     })
  }
  btnEl.addEventListener('click', searchMovie);
-
  
 function addFavorite(event){
  const selected=event.currentTarget;
@@ -70,7 +70,31 @@ function addFavorite(event){
      if (listElements[i].classList.contains('selected')){
         console.log(listElements[i]); 
         arrFav.push(listElements[i]);
-        console.log(arrFav);
+        console.log(arrFav[0].innerText);
+        const nameFavSerie= arrFav[0].innerText;
+        console.log(arrFav[0].lastElementChild);
+        const imgFav=arrFav[0].lastElementChild; 
+
+                const listFavElement= document.createElement('li');
+                listFavElement.setAttribute('class', 'fav-item');
+                favList.appendChild(listFavElement);
+                
+
+                const titleFavSeries= document.createElement('h2');
+                titleFavSeries.setAttribute('class', 'fav-title-series');
+                const titleFavText= document.createTextNode(nameFavSerie);
+                titleFavSeries.appendChild(titleFavText);
+                listFavElement.appendChild(titleFavSeries);
+                listFavElement.appendChild(imgFav);
+
+                
+
+                // const imgSeries= document.createElement('img');
+                // imgSeries.setAttribute('src', "https://via.placeholder.com/210x295/ffffff/666666/?text=TV");
+                // imgSeries.setAttribute('alt', nameSerie);
+                // listElement.appendChild(imgSeries);
+        
+
      }
     //  else if (!listElements[i].classList.contains('selected')){
     //      arrFav.remove(listElements[i]);
