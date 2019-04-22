@@ -4,6 +4,7 @@ const inputEl= document.querySelector('#series');
 const btnEl= document.querySelector('.btn');
 const list= document.querySelector('.series__list');
 
+const arrFav=[];
 
 function searchMovie(){
     const searchName = inputEl.value;
@@ -11,12 +12,7 @@ function searchMovie(){
     fetch('http://api.tvmaze.com/search/shows?q=' + searchName)
     .then(response=>response.json())
     .then(data=>{
-        console.log(data);
-        console.log(data[0].show);
-        console.log(data[0].show.name);
-        console.log(data[0].show.image.medium);
-        console.log(data[3].show.image);
-       
+        
         for (let i=0; i<data.length; i++){
             const nameSerie = data[i].show.name;
             const urlImageNull = data[i].show.image;
@@ -36,7 +32,6 @@ function searchMovie(){
                 imgSeries.setAttribute('src', "https://via.placeholder.com/210x295/ffffff/666666/?text=TV");
                 imgSeries.setAttribute('alt', nameSerie);
                 listElement.appendChild(imgSeries);
-                
             }
             else{
                 const urlImage = data[i].show.image.medium;
@@ -57,12 +52,48 @@ function searchMovie(){
                 imgSeries.setAttribute('alt', nameSerie);
                 listElement.appendChild(imgSeries);
             }
+
         }
+         //addFavoritetoList();
     })
  }
  btnEl.addEventListener('click', searchMovie);
 
+ 
 function addFavorite(event){
  const selected=event.currentTarget;
  selected.classList.toggle('selected');
+
+ const listElements=document.querySelectorAll('.item');
+ console.log(listElements);
+ for (let i=0; i<listElements.length; i++){
+     if (listElements[i].classList.contains('selected')){
+        console.log(listElements[i]); 
+        arrFav.push(listElements[i]);
+        console.log(arrFav);
+     }
+    //  else if (!listElements[i].classList.contains('selected')){
+    //      arrFav.remove(listElements[i]);
+    //  }
+ }
+
+
+//  console.log(event.currentTarget.children);
+//  let arr=[];
+//  let newArray= arr.push(event.currentTarget.children);
+//  console.log(newArray);
 }
+
+//  function addFavoritetoList(){ 
+//      const listElements=document.querySelectorAll('.item');
+//      console.log(listElements);
+//      for (let i=0; i<listElements.length; i++){
+//          if (listElements[i].classList.contains('selected')){
+//             console.log(listElements[i].classList.contains('selected')); 
+//             // let arr=[];
+//             // let newArr= arr.push(listElements[i]);
+//             // console.log(arr);
+//          }
+//      }    
+//  }
+
