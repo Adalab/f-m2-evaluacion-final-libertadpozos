@@ -9,13 +9,15 @@
 //*** LAYOUT ***
 @import './layout/base';
 @import './layout/header';
-@import './layout/footer';
+
+@import './layout/main';
+
 // @import 'layout/grid';
 
 //**** COMPONENTS ****
 @import './components/buttons';
 @import './components/page';
-@import './components/hero';
+
 // @import './components/newsletter';
 // @import './components/typography';
 // @import './components/forms';
