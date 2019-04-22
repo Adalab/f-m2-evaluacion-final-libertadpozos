@@ -1,8 +1,10 @@
 'use strict';
 
+
 const inputEl= document.querySelector('#series');
 const btnEl= document.querySelector('.btn');
 const list= document.querySelector('.series__list');
+const favList= document.querySelector('.fav__list');
 
 
 function searchMovie(){
@@ -54,11 +56,42 @@ function searchMovie(){
                 listElement.appendChild(imgSeries);
             }
         }
+       
     })
  }
  btnEl.addEventListener('click', searchMovie);
 
+
 function addFavorite(event){
  const selected=event.currentTarget;
  selected.classList.toggle('selected');
+ addToFavList();
+ 
 }
+
+const favSectionEl= document.querySelector('.fav_section');
+
+function addToFavList(){
+    const arrFav=event.currentTarget.children;
+    console.log(arrFav);
+    
+    for(let i=0; i<arrFav.length; i++){
+   
+     const listFavElement= document.createElement('li');
+     listFavElement.setAttribute('class', 'fav-item');
+     favList.appendChild(listFavElement);
+     const titleFavSeries= arrFav[i];
+     favList.appendChild(titleFavSeries);
+     const favImg= arrFav[i];
+     favList.appendChild(favImg);
+   }
+   }
+  
+
+
+   //TITULO de FAV SECTION
+
+//    const titleSection= document.createElement('h2');
+//    titleSection.setAttribute('class', 'fav-title-section');
+//    const titleFavSection= document.createTextNode('Mis series favoritas');
+//    favSectionEl.appendChild(titleFavSection);
