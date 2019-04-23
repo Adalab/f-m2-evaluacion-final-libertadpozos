@@ -16,6 +16,7 @@ function searchMovie(){
     .then(data=>{
         console.log(data);
        
+        list.innerHTML= "";
         for (let i=0; i<data.length; i++){
             const nameSerie = data[i].show.name;
             const urlImageNull = data[i].show.image;
@@ -79,14 +80,15 @@ function addToFavList(){
     favList.appendChild(listFavElement);
     //título
     const titleFav= document.createElement('h3');
+    titleFav.setAttribute('class', 'fav_title');
     const titleFavContent= document.createTextNode(objFav.title);
     titleFav.appendChild(titleFavContent);
     listFavElement.appendChild(titleFav);
     //imagen
     const imgFav= document.createElement('img');
     imgFav.setAttribute('src', objFav.src);
+    imgFav.setAttribute('class', 'fav_img');
     imgFav.setAttribute('alt', objFav.title);
     listFavElement.appendChild(imgFav);
 }
   
-

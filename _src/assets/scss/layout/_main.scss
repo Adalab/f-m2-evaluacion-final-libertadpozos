@@ -1,15 +1,28 @@
 
-
 .item{
     margin-bottom: 10px;
-    background-color: pink;
+    background-color:orange;
 }
 
 .selected{
     background-color:red;
     color:white;
-    
 }
 .container{
     display:flex;
+    margin: 15px;
+}
+.fav_section{
+
+}
+.title-section{
+    font-size: 15px;
+}
+.fav_title{
+    font-size: 10px;
+}
+
+.fav_img{
+    width: 80px;
+    height: 80px;
 }
