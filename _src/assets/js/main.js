@@ -98,7 +98,9 @@ function addLocalStorage(){
 }
 
 function getLocalStorage(){
-    const arrFavParse=JSON.parse(localStorage.getItem('arrFavString'));
+    const arrFavString = localStorage.getItem('arrFavString');
+    if (arrFavString){
+    const arrFavParse= JSON.parse(arrFavString);
     console.log(arrFavParse[0].title);
     for (let i=0; i<arrFavParse.length; i++){
      const listFavElement= document.createElement('li');
@@ -118,6 +120,8 @@ function getLocalStorage(){
       listFavElement.appendChild(imgFav);
     }
     return arrFavParse;
+}
+   
  }
 
 reloadPage();
