@@ -39,6 +39,7 @@ function searchMovie() {
             "https://via.placeholder.com/210x295/ffffff/666666/?text=TV"
           );
           imgSeries.setAttribute("alt", nameSerie);
+          imgSeries.setAttribute("class", "image");
           listElement.appendChild(imgSeries);
         } else {
           const urlImage = data[i].show.image.medium;
@@ -46,6 +47,7 @@ function searchMovie() {
           const imgSeries = document.createElement("img");
           imgSeries.setAttribute("src", urlImage);
           imgSeries.setAttribute("alt", nameSerie);
+          imgSeries.setAttribute("class", "image");
           listElement.appendChild(imgSeries);
         }
       }
