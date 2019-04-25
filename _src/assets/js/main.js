@@ -19,18 +19,19 @@ function searchMovie() {
       for (let i = 0; i < data.length; i++) {
         const nameSerie = data[i].show.name;
         const urlImageNull = data[i].show.image;
+        //li
+        const listElement = document.createElement("li");
+        listElement.setAttribute("class", "item");
+        list.appendChild(listElement);
+        listElement.addEventListener("click", addFavorite);
+        //título
+        const titleSeries = document.createElement("h2");
+        titleSeries.setAttribute("class", "title-series");
+        const titleText = document.createTextNode(nameSerie);
+        titleSeries.appendChild(titleText);
+        listElement.appendChild(titleSeries);
+        
         if (urlImageNull === null) {
-          //li
-          const listElement = document.createElement("li");
-          listElement.setAttribute("class", "item");
-          list.appendChild(listElement);
-          listElement.addEventListener("click", addFavorite);
-          //título
-          const titleSeries = document.createElement("h2");
-          titleSeries.setAttribute("class", "title-series");
-          const titleText = document.createTextNode(nameSerie);
-          titleSeries.appendChild(titleText);
-          listElement.appendChild(titleSeries);
           //imagen
           const imgSeries = document.createElement("img");
           imgSeries.setAttribute(
@@ -41,17 +42,6 @@ function searchMovie() {
           listElement.appendChild(imgSeries);
         } else {
           const urlImage = data[i].show.image.medium;
-          //li
-          const listElement = document.createElement("li");
-          listElement.setAttribute("class", "item");
-          list.appendChild(listElement);
-          listElement.addEventListener("click", addFavorite);
-          //titulo
-          const titleSeries = document.createElement("h2");
-          titleSeries.setAttribute("class", "title-series");
-          const titleText = document.createTextNode(nameSerie);
-          titleSeries.appendChild(titleText);
-          listElement.appendChild(titleSeries);
           //imagen
           const imgSeries = document.createElement("img");
           imgSeries.setAttribute("src", urlImage);
